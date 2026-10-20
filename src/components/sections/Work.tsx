@@ -41,7 +41,7 @@ export function Work() {
   return (
     <section id="work" className="scroll-mt-20 py-24">
       <div className="container">
-        <SectionHeading eyebrow="Our Works" title={<>Selected projects, <em className="text-gold">made with care</em></>} intro="A curated look at platforms, apps and brands we've designed and engineered with our partners." />
+        <SectionHeading eyebrow="Our Works" title={<>Selected projects, <em className="text-brand">made with care</em></>} intro="A curated look at platforms, apps and brands we've designed and engineered with our partners." />
         <LayoutGroup>
           <div role="tablist" aria-label="Filter projects" className="mb-10 flex flex-wrap justify-center gap-2">
             {filters.map((f) => (
@@ -72,7 +72,7 @@ export function Work() {
                         </span>
                       </div>
                       <p className="mt-2 text-sm text-muted-foreground">{p.summary}</p>
-                      <p className="mt-4 text-sm font-medium text-gold">{p.metric}</p>
+                      <p className="mt-4 text-sm font-medium text-brand">{p.metric}</p>
                       <div className="mt-4 flex flex-wrap gap-1.5">{p.tags.map((t) => <Badge key={t}>{t}</Badge>)}</div>
                     </div>
                   </motion.a>

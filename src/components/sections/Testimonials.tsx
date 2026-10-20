@@ -14,7 +14,7 @@ export function Testimonials() {
             <motion.li key={t.name} variants={fadeUp}>
               <Card className="h-full">
                 <CardContent className="flex h-full flex-col p-7">
-                  <Quote aria-hidden className="h-6 w-6 text-gold" />
+                  <Quote aria-hidden className="h-6 w-6 text-brand" />
                   <blockquote className="mt-4 flex-1 font-display text-lg leading-relaxed">“{t.quote}”</blockquote>
                   <figcaption className="mt-6 flex items-center gap-3">
                     <span aria-hidden className="grid h-10 w-10 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">

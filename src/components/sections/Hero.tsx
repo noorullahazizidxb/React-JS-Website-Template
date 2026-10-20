@@ -17,13 +17,13 @@ export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pb-20 pt-32 sm:pt-40">
       <div aria-hidden className="grain absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-      <motion.div aria-hidden style={{ y }} className="absolute -top-40 left-1/2 h-[520px] w-[820px] max-w-[160vw] -translate-x-1/2 rounded-full bg-gold/20 blur-[120px]" />
+      <motion.div aria-hidden style={{ y }} className="absolute -top-40 left-1/2 h-[520px] w-[820px] max-w-[160vw] -translate-x-1/2 rounded-full bg-brand/20 blur-[120px]" />
       <motion.div className="container relative" variants={stagger} initial={reduce ? "show" : "hidden"} animate="show">
         <motion.p variants={fadeUp} className="mb-6 inline-flex items-center gap-2 rounded-full border bg-card/70 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur">
-          <span className="h-1.5 w-1.5 rounded-full bg-gold" /> Selected works · 2024 — 2026
+          <span className="h-1.5 w-1.5 rounded-full bg-brand" /> Selected works · 2024 — 2026
         </motion.p>
         <motion.h1 variants={fadeUp} className="max-w-4xl font-display text-[2.6rem] leading-[1.05] tracking-tight sm:text-7xl">
-          We craft digital products with <em className="text-gold">quiet</em> confidence.
+          We craft digital products with <em className="text-brand">quiet</em> confidence.
         </motion.h1>
         <motion.p variants={fadeUp} className="mt-6 max-w-xl text-lg text-muted-foreground">
           DevMinds is a design &amp; engineering studio building premium web platforms, mobile apps and brands for ambitious teams.

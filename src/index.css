@@ -18,8 +18,8 @@
     --accent-foreground: 220 49% 8%;
     --border: 40 25% 86%;
     --input: 40 25% 86%;
-    --ring: 40 60% 45%;
-    --gold: 40 60% 45%;
+    --ring: 225 80% 51%;
+    --brand: 225 80% 51%;
     --radius: 0.9rem;
   }
   .dark {
@@ -27,7 +27,7 @@
     --foreground: 42 39% 94%;
     --card: 222 33% 10%;
     --card-foreground: 42 39% 94%;
-    --primary: 40 50% 57%;
+    --primary: 29 100% 56%;
     --primary-foreground: 222 33% 6%;
     --secondary: 222 26% 15%;
     --secondary-foreground: 42 39% 94%;
@@ -37,13 +37,13 @@
     --accent-foreground: 42 39% 94%;
     --border: 220 22% 19%;
     --input: 220 22% 19%;
-    --ring: 40 50% 57%;
-    --gold: 40 50% 57%;
+    --ring: 29 100% 56%;
+    --brand: 29 100% 56%;
   }
   * { @apply border-border; }
   html { scroll-behavior: smooth; }
   body { @apply bg-background text-foreground font-sans antialiased; overflow-x: hidden; }
-  ::selection { background: hsl(var(--gold) / .3); }
+  ::selection { background: hsl(var(--brand) / .3); }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 }
 .grain { background-image: radial-gradient(hsl(var(--foreground) / .06) 1px, transparent 1px); background-size: 22px 22px; }

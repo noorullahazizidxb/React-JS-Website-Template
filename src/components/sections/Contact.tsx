@@ -19,7 +19,7 @@ export function Contact() {
     <section id="contact" className="scroll-mt-20 py-24">
       <div className="container">
         <Reveal className="relative overflow-hidden rounded-3xl bg-primary p-8 text-primary-foreground sm:p-14">
-          <div aria-hidden className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-gold/30 blur-3xl" />
+          <div aria-hidden className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-brand/30 blur-3xl" />
           <div className="relative grid gap-12 lg:grid-cols-2">
             <motion.div variants={fadeUp}>
               <p className="text-xs font-semibold uppercase tracking-[0.25em] opacity-70">Start a project</p>
@@ -31,7 +31,7 @@ export function Contact() {
               <AnimatePresence mode="wait">
                 {sent ? (
                   <motion.div key="ok" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="flex min-h-[300px] flex-col items-center justify-center text-center" role="status">
-                    <CheckCircle2 className="h-12 w-12 text-gold" />
+                    <CheckCircle2 className="h-12 w-12 text-brand" />
                     <p className="mt-4 text-xl font-semibold">Thank you!</p>
                     <p className="mt-1 text-sm text-muted-foreground">Your email app should open with your message.</p>
                   </motion.div>
