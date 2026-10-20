@@ -20,7 +20,7 @@ export default {
         muted: { DEFAULT: c("muted"), foreground: c("muted-foreground") },
         accent: { DEFAULT: c("accent"), foreground: c("accent-foreground") },
         card: { DEFAULT: c("card"), foreground: c("card-foreground") },
-        gold: c("gold"),
+        brand: c("brand"),
       },
       borderRadius: { lg: "var(--radius)", md: "calc(var(--radius) - 2px)", sm: "calc(var(--radius) - 4px)" },
     },

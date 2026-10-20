@@ -16,9 +16,9 @@ export function Services() {
             const Icon = icons[i];
             return (
               <motion.li key={s.title} variants={fadeUp}>
-                <Card className="group h-full transition-colors hover:border-gold/60">
+                <Card className="group h-full transition-colors hover:border-brand/60">
                   <CardHeader>
-                    <span className="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-gold/15 text-gold transition-transform duration-500 group-hover:scale-110"><Icon className="h-5 w-5" /></span>
+                    <span className="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-brand/15 text-brand transition-transform duration-500 group-hover:scale-110"><Icon className="h-5 w-5" /></span>
                     <CardTitle className="text-lg">{s.title}</CardTitle>
                     <CardDescription className="leading-relaxed">{s.body}</CardDescription>
                   </CardHeader>

@@ -26,7 +26,7 @@ export function Reveal({ children, className, as = "div" }: { children: ReactNod
 export function SectionHeading({ eyebrow, title, intro }: { eyebrow: string; title: ReactNode; intro?: string }) {
   return (
     <Reveal className="mx-auto mb-14 max-w-2xl text-center">
-      <motion.p variants={fadeUp} className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-gold">{eyebrow}</motion.p>
+      <motion.p variants={fadeUp} className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-brand">{eyebrow}</motion.p>
       <motion.h2 variants={fadeUp} className="font-display text-3xl leading-tight tracking-tight sm:text-5xl">{title}</motion.h2>
       {intro && <motion.p variants={fadeUp} className="mt-4 text-muted-foreground sm:text-lg">{intro}</motion.p>}
     </Reveal>
