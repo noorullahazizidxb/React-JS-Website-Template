@@ -4,41 +4,43 @@
 
 @layer base {
   :root {
-    --background: 40 37% 97%;
-    --foreground: 220 49% 8%;
+    --background: 220 60% 98%;
+    --foreground: 223.8 62.7% 11.6%;
     --card: 0 0% 100%;
-    --card-foreground: 220 49% 8%;
-    --primary: 220 49% 8%;
-    --primary-foreground: 40 37% 97%;
-    --secondary: 42 32% 92%;
-    --secondary-foreground: 220 49% 8%;
-    --muted: 42 32% 92%;
-    --muted-foreground: 223 10% 40%;
-    --accent: 42 32% 92%;
-    --accent-foreground: 220 49% 8%;
-    --border: 40 25% 86%;
-    --input: 40 25% 86%;
-    --ring: 225 80% 51%;
-    --brand: 225 80% 51%;
+    --card-foreground: 223.8 62.7% 11.6%;
+    --primary: 225.1 80.1% 50.8%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 218.6 63.6% 95.7%;
+    --secondary-foreground: 223.8 62.7% 11.6%;
+    --muted: 218.6 63.6% 95.7%;
+    --muted-foreground: 221.7 23.7% 38%;
+    --accent: 218.6 63.6% 95.7%;
+    --accent-foreground: 223.8 62.7% 11.6%;
+    --border: 218.2 45.8% 90.6%;
+    --input: 218.2 45.8% 90.6%;
+    --ring: 225.1 80.1% 50.8%;
+    --brand: 225.1 80.1% 50.8%;
+    --brand-2: 265.1 74.3% 47.3%;
     --radius: 0.9rem;
   }
   .dark {
-    --background: 222 33% 6%;
-    --foreground: 42 39% 94%;
-    --card: 222 33% 10%;
-    --card-foreground: 42 39% 94%;
-    --primary: 29 100% 56%;
-    --primary-foreground: 222 33% 6%;
-    --secondary: 222 26% 15%;
-    --secondary-foreground: 42 39% 94%;
-    --muted: 222 26% 15%;
-    --muted-foreground: 221 12% 65%;
-    --accent: 222 26% 15%;
-    --accent-foreground: 42 39% 94%;
-    --border: 220 22% 19%;
-    --input: 220 22% 19%;
-    --ring: 29 100% 56%;
-    --brand: 29 100% 56%;
+    --background: 226.7 33.3% 5.3%;
+    --foreground: 220 30% 96.1%;
+    --card: 224 31.9% 9.2%;
+    --card-foreground: 220 30% 96.1%;
+    --primary: 28.7 100% 56.1%;
+    --primary-foreground: 226.7 33.3% 5.3%;
+    --secondary: 223.3 28.1% 12.5%;
+    --secondary-foreground: 220 30% 96.1%;
+    --muted: 223.3 28.1% 12.5%;
+    --muted-foreground: 220 15.4% 65.7%;
+    --accent: 223.3 28.1% 12.5%;
+    --accent-foreground: 220 30% 96.1%;
+    --border: 221.7 24.7% 18.2%;
+    --input: 221.7 24.7% 18.2%;
+    --ring: 28.7 100% 56.1%;
+    --brand: 28.7 100% 56.1%;
+    --brand-2: 44 100% 52.2%;
   }
   * { @apply border-border; }
   html { scroll-behavior: smooth; }

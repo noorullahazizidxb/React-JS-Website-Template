@@ -19,7 +19,7 @@ export function Contact() {
     <section id="contact" className="scroll-mt-20 py-24">
       <div className="container">
         <Reveal className="relative overflow-hidden rounded-3xl bg-primary p-8 text-primary-foreground sm:p-14">
-          <div aria-hidden className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-brand/30 blur-3xl" />
+          <div aria-hidden className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-brand-2/40 blur-3xl" />
           <div className="relative grid gap-12 lg:grid-cols-2">
             <motion.div variants={fadeUp}>
               <p className="text-xs font-semibold uppercase tracking-[0.25em] opacity-70">Start a project</p>
