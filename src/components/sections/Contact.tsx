@@ -1,16 +1,27 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input, Textarea } from "../ui/input";
 import { Label } from "../ui/label";
 import { Reveal, fadeUp } from "../motion";
+import { preloadRecaptcha, verifyRecaptcha } from "../../lib/recaptcha";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  useEffect(() => { preloadRecaptcha(); }, []);
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const d = new FormData(e.currentTarget);
+    setError(null);
+    setBusy(true);
+    try {
+      if (!(await verifyRecaptcha("contact"))) { setError("We couldn't verify you're human. Please try again."); return; }
+    } catch {
+      setError("Verification is unavailable right now. Please email us directly."); return;
+    } finally { setBusy(false); }
     const body = `Name: ${d.get("name")}\nEmail: ${d.get("email")}\n\n${d.get("message")}`;
     window.location.href = `mailto:hello@devminds.net?subject=${encodeURIComponent("New project inquiry")}&body=${encodeURIComponent(body)}`;
     setSent(true);
@@ -40,7 +51,9 @@ export function Contact() {
                     <div className="grid gap-2"><Label htmlFor="name">Name</Label><Input id="name" name="name" required autoComplete="name" placeholder="Jane Doe" /></div>
                     <div className="grid gap-2"><Label htmlFor="email">Email</Label><Input id="email" name="email" type="email" required autoComplete="email" placeholder="jane@company.com" /></div>
                     <div className="grid gap-2"><Label htmlFor="message">Project details</Label><Textarea id="message" name="message" required placeholder="What are you building?" /></div>
-                    <Button type="submit" size="lg">Send inquiry <ArrowRight /></Button>
+                    {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
+                    <Button type="submit" size="lg" disabled={busy}>{busy ? "Verifying…" : "Send inquiry"} <ArrowRight /></Button>
+                    <p className="text-xs text-muted-foreground">Protected by reCAPTCHA. Google <a className="underline" href="https://policies.google.com/privacy">Privacy</a> &amp; <a className="underline" href="https://policies.google.com/terms">Terms</a> apply.</p>
                   </motion.form>
                 )}
               </AnimatePresence>
