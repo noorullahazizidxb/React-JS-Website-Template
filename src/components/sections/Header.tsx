@@ -26,7 +26,7 @@ export function Header() {
     <header className={cn("fixed inset-x-0 top-0 z-50 transition-all duration-300", scrolled ? "border-b bg-background/80 backdrop-blur-xl" : "bg-transparent")}>
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground">Skip to content</a>
       <div className="container flex h-16 items-center justify-between gap-4">
-        <a href="#top" aria-label="DevMinds home"><Logo /></a>
+        <a href="#top" aria-label="Our Works In DevMinds.net home"><Logo /></a>
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex items-center gap-8 text-sm text-muted-foreground">
             {links.map((l) => (
