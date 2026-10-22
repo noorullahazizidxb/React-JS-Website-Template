@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Our Works — DevMinds | Digital Product Studio</title>
-    <meta name="description" content="Selected work by DevMinds: premium web platforms, mobile apps, and brand experiences engineered for performance and crafted with care." />
+    <title>DevMinds Works — Our Projects & Work | DevMinds Software Studio</title>
+    <meta name="description" content="DevMinds Works: our projects and work — web platforms, mobile apps and products like DevMinds Marketplace, Jobs, Notes and Budget App, built by Noorullah Azizi and team." />
     <link rel="canonical" href="https://ourworks.devminds.net/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -13,12 +13,12 @@
     <meta name="theme-color" content="#090B12" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="DevMinds" />
-    <meta property="og:title" content="Our Works — DevMinds" />
+    <meta property="og:title" content="DevMinds Works — Our Projects & Work | DevMinds Software Studio" />
     <meta property="og:description" content="Premium digital products, engineered for performance and crafted with care." />
     <meta property="og:url" content="https://ourworks.devminds.net/" />
     <meta property="og:image" content="https://ourworks.devminds.net/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Our Works — DevMinds" />
+    <meta name="twitter:title" content="DevMinds Works — Our Projects & Work | DevMinds Software Studio" />
     <meta name="twitter:description" content="Premium digital products, engineered for performance and crafted with care." />
     <meta name="twitter:image" content="https://ourworks.devminds.net/og.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,10 +33,30 @@
         } catch (e) {}
       })();
     </script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"DevMinds","url":"https://ourworks.devminds.net/","logo":"https://ourworks.devminds.net/logo-light.svg"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://devminds.net/#organization","name":"DevMinds","url":"https://devminds.net","logo":"https://ourworks.devminds.net/logo-light@4x.png","founder":{"@type":"Person","name":"Noorullah Azizi","url":"https://noorullah-azizi.devminds.net"},"sameAs":["https://github.com/noorullahazizidxb","https://noorullah-azizi.devminds.net"]},{"@type":"WebSite","@id":"https://ourworks.devminds.net/#website","name":"DevMinds Works","url":"https://ourworks.devminds.net/","publisher":{"@id":"https://devminds.net/#organization"}},{"@type":"CollectionPage","name":"DevMinds Works — Our Projects","url":"https://ourworks.devminds.net/","isPartOf":{"@id":"https://ourworks.devminds.net/#website"},"about":{"@id":"https://devminds.net/#organization"}}]}</script>
+    <script>
+      (function () {
+        var id = 'G-X4GT9N3KKF', done = false;
+        function load() {
+          if (done) return; done = true;
+          var s = document.createElement('script'); s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+          document.head.appendChild(s);
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { dataLayer.push(arguments); };
+          gtag('js', new Date()); gtag('config', id);
+        }
+        ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (e) {
+          addEventListener(e, load, { once: true, passive: true });
+        });
+        addEventListener('load', function () {
+          (window.requestIdleCallback || function (f) { setTimeout(f, 3500); })(load, { timeout: 5000 });
+        });
+      })();
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><main style="max-width:760px;margin:0 auto;padding:48px 20px;font-family:system-ui,sans-serif"><h1>DevMinds Works — our projects and work</h1><p>DevMinds Works: our projects and work — web platforms, mobile apps and products like DevMinds Marketplace, Jobs, Notes and Budget App, built by Noorullah Azizi and team.</p><nav aria-label="DevMinds products"><h2>DevMinds products</h2><ul><li><a href="https://devminds.net">DevMinds — software studio</a></li><li><a href="https://marketplace.devminds.net">DevMinds Marketplace — buy and sell online</a></li><li><a href="https://jobs.devminds.net">DevMinds Jobs — jobs platform and education hub</a></li><li><a href="https://notes.devminds.net">DevMinds Notes — note taking app</a></li><li><a href="https://budget-manager.devminds.net">DevMinds Budget App — budget manager</a></li><li><a href="https://noorullah-azizi.devminds.net">Noorullah Azizi — founder portfolio</a></li></ul></nav></main></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
