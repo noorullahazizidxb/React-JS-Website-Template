@@ -8,10 +8,12 @@ import { Process } from "./components/sections/Process";
 import { Testimonials } from "./components/sections/Testimonials";
 import { Contact } from "./components/sections/Contact";
 import { Footer } from "./components/sections/Footer";
+import { Seo } from "./seo/Seo";
 
 export default function App() {
   return (
     <ThemeProvider>
+      <Seo />
       <MotionConfig reducedMotion="user">
         <Header />
         <motion.main id="main" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
