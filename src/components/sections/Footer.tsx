@@ -1,14 +1,6 @@
 import { AtSign, Globe, Send } from "lucide-react";
 import { Logo, BRAND } from "../Logo";
-
-const DEVMINDS_PRODUCTS = [
-  { href: "https://devminds.net", label: "DevMinds — software studio" },
-  { href: "https://marketplace.devminds.net", label: "DevMinds Marketplace — buy and sell online" },
-  { href: "https://jobs.devminds.net", label: "DevMinds Jobs — jobs platform and education hub" },
-  { href: "https://notes.devminds.net", label: "DevMinds Notes — note taking app" },
-  { href: "https://budget-manager.devminds.net", label: "DevMinds Budget App — budget manager" },
-  { href: "https://noorullah-azizi.devminds.net", label: "Noorullah Azizi — founder portfolio" },
-];
+import { DevmindsProducts } from "../DevmindsProducts";
 
 export function Footer() {
   return (
@@ -27,14 +19,9 @@ export function Footer() {
           <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} {BRAND}. All rights reserved.</p>
         </div>
       </div>
-      <nav aria-label="DevMinds products" className="container mt-8 border-t pt-6">
-        <h2 className="text-sm font-semibold">DevMinds products</h2>
-        <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-          {DEVMINDS_PRODUCTS.map((p) => (
-            <li key={p.href}><a href={p.href} className="hover:text-foreground">{p.label}</a></li>
-          ))}
-        </ul>
-      </nav>
+      <div className="container">
+        <DevmindsProducts current="ourworks" />
+      </div>
     </footer>
   );
 }
