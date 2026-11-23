@@ -1,7 +1,8 @@
 import "./devminds-products.css";
 
+import type { CSSProperties } from "react";
 import { MotionConfig, motion } from "framer-motion";
-import { DEVMINDS_PRODUCTS, LOGO_HEIGHT, hasWideLogo, productLogoSrc, type DevmindsProduct, type LogoVariant, type ProductSlug } from "@/lib/devminds-products";
+import { DEVMINDS_PRODUCTS, LOGO_HEIGHT, desktopSpan, hasWideLogo, productLogoSrc, type DevmindsProduct, type LogoVariant, type ProductSlug } from "@/lib/devminds-products";
 
 interface DevmindsProductsProps {
   /** The product this app is; highlighted as "You are here". */
@@ -41,12 +42,16 @@ function CardBody({ product, isCurrent }: { product: DevmindsProduct; isCurrent:
   );
 }
 
-/** "Our products" footer section listing every DevMinds product. */
+type SpanStyle = CSSProperties & { "--dmp-span": number };
+
+const spanStyle = (product: DevmindsProduct): SpanStyle => ({ "--dmp-span": desktopSpan(product) });
+
+/** "More from DevMinds" footer section listing every DevMinds product (two rows on desktop). */
 export function DevmindsProducts({ current }: DevmindsProductsProps) {
   return (
     <MotionConfig reducedMotion="user">
       <nav className="dmp" aria-labelledby="dmp-title">
-        <h2 id="dmp-title" className="dmp-title">Our products</h2>
+        <h2 id="dmp-title" className="dmp-title">More from DevMinds</h2>
         <ul className="dmp-grid">
           {DEVMINDS_PRODUCTS.map((product, index) => {
             const isCurrent = product.slug === current;
@@ -55,6 +60,7 @@ export function DevmindsProducts({ current }: DevmindsProductsProps) {
               <motion.li
                 key={product.slug}
                 className={hasWideLogo(product) ? "dmp-item dmp-item--wide" : "dmp-item"}
+                style={spanStyle(product)}
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "0px 0px -40px 0px" }}

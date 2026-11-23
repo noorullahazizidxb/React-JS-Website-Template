@@ -21,7 +21,9 @@
     --ring: 225.1 80.1% 50.8%;
     --brand: 225.1 80.1% 50.8%;
     --brand-2: 265.1 74.3% 47.3%;
+    --destructive: 0 72.2% 45.1%;
     --radius: 0.9rem;
+    color-scheme: light;
   }
   .dark {
     --background: 226.7 33.3% 5.3%;
@@ -41,11 +43,17 @@
     --ring: 28.7 100% 56.1%;
     --brand: 28.7 100% 56.1%;
     --brand-2: 44 100% 52.2%;
+    --destructive: 0 84.2% 66.1%;
+    color-scheme: dark;
   }
   * { @apply border-border; }
   html { scroll-behavior: smooth; }
   body { @apply bg-background text-foreground font-sans antialiased; overflow-x: hidden; }
   ::selection { background: hsl(var(--brand) / .3); }
+  :focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 3px; }
+  h1, h2, h3 { text-wrap: balance; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 }
 .grain { background-image: radial-gradient(hsl(var(--foreground) / .06) 1px, transparent 1px); background-size: 22px 22px; }
+/* The reCAPTCHA notice is shown next to the contact form, so Google allows hiding the floating badge. */
+.grecaptcha-badge { visibility: hidden; }

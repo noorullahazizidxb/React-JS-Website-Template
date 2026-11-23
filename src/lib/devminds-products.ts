@@ -50,3 +50,14 @@ export function productLogoSrc(slug: ProductSlug, variant: LogoVariant): string 
 export function hasWideLogo(product: DevmindsProduct): boolean {
   return Math.max(product.logoWidths.light, product.logoWidths.dark) >= WIDE_LOGO_MIN_WIDTH;
 }
+
+/** Desktop footer grid: a 12-column track that the product cards fill in exactly two rows. */
+export const DESKTOP_GRID_COLUMNS = 12;
+export const DESKTOP_GRID_ROWS = 2;
+const WIDE_SPAN = 4;
+const NARROW_SPAN = 2;
+
+/** Columns a product card spans on desktop; wide wordmarks get twice the room. */
+export function desktopSpan(product: DevmindsProduct): number {
+  return hasWideLogo(product) ? WIDE_SPAN : NARROW_SPAN;
+}

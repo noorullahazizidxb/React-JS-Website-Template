@@ -1,5 +1,6 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 export const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
 export const fadeUp: Variants = {
@@ -23,12 +24,23 @@ export function Reveal({ children, className, as = "div" }: { children: ReactNod
   );
 }
 
-export function SectionHeading({ eyebrow, title, intro }: { eyebrow: string; title: ReactNode; intro?: string }) {
+type SectionTone = "plain" | "muted";
+
+/** Page section with the shared vertical rhythm and anchor offset for the fixed header. */
+export function Section({ id, tone = "plain", busy, children }: { id: string; tone?: SectionTone; busy?: boolean; children: ReactNode }) {
   return (
-    <Reveal className="mx-auto mb-14 max-w-2xl text-center">
-      <motion.p variants={fadeUp} className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-brand">{eyebrow}</motion.p>
-      <motion.h2 variants={fadeUp} className="font-display text-3xl leading-tight tracking-tight sm:text-5xl">{title}</motion.h2>
-      {intro && <motion.p variants={fadeUp} className="mt-4 text-muted-foreground sm:text-lg">{intro}</motion.p>}
+    <section id={id} aria-labelledby={`${id}-title`} aria-busy={busy} className={cn("scroll-mt-20 py-20 sm:py-28", tone === "muted" && "border-y border-border/60 bg-secondary/50")}>
+      <div className="container">{children}</div>
+    </section>
+  );
+}
+
+export function SectionHeading({ id, eyebrow, title, intro }: { id: string; eyebrow: string; title: ReactNode; intro?: string }) {
+  return (
+    <Reveal className="mx-auto mb-12 max-w-2xl text-center sm:mb-16">
+      <motion.p variants={fadeUp} className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-brand"><span aria-hidden className="h-px w-6 bg-brand/60" />{eyebrow}<span aria-hidden className="h-px w-6 bg-brand/60" /></motion.p>
+      <motion.h2 id={`${id}-title`} variants={fadeUp} className="font-display text-3xl leading-tight tracking-tight sm:text-5xl">{title}</motion.h2>
+      {intro && <motion.p variants={fadeUp} className="mt-4 text-pretty text-muted-foreground sm:text-lg">{intro}</motion.p>}
     </Reveal>
   );
 }
