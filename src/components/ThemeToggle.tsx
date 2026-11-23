@@ -1,5 +1,6 @@
 import { Monitor, Moon, Sun } from "lucide-react";
 import { useTheme, type Theme } from "./theme";
+import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group";
 import { cn } from "@/lib/utils";
 
 const opts: { v: Theme; icon: typeof Sun; label: string }[] = [
@@ -8,26 +9,30 @@ const opts: { v: Theme; icon: typeof Sun; label: string }[] = [
   { v: "dark", icon: Moon, label: "Dark theme" },
 ];
 
-export function ThemeToggle() {
+const isTheme = (value: string): value is Theme => opts.some((o) => o.v === value);
+
+/** Light / system / dark switch: a radio group with arrow-key navigation (Radix) and 40px targets. */
+export function ThemeToggle({ className }: { className?: string }) {
   const { theme, setTheme } = useTheme();
   return (
-    <div role="radiogroup" aria-label="Color theme" className="flex items-center gap-0.5 rounded-full border bg-card/60 p-1">
+    <ToggleGroup
+      type="single"
+      value={theme}
+      onValueChange={(value) => isTheme(value) && setTheme(value)}
+      aria-label="Color theme"
+      className={cn("gap-0.5 rounded-full border bg-card/60 p-0.5", className)}
+    >
       {opts.map(({ v, icon: Icon, label }) => (
-        <button
+        <ToggleGroupItem
           key={v}
-          role="radio"
-          aria-checked={theme === v}
+          value={v}
           aria-label={label}
           title={label}
-          onClick={() => setTheme(v)}
-          className={cn(
-            "grid h-7 w-7 place-items-center rounded-full text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-            theme === v && "bg-primary text-primary-foreground hover:text-primary-foreground",
-          )}
+          className="h-10 w-10 rounded-full p-0 text-muted-foreground hover:bg-accent hover:text-foreground focus-visible:ring-2 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
         >
-          <Icon className="h-3.5 w-3.5" />
-        </button>
+          <Icon aria-hidden />
+        </ToggleGroupItem>
       ))}
-    </div>
+    </ToggleGroup>
   );
 }

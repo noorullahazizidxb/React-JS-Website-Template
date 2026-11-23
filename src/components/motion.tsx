@@ -1,24 +1,16 @@
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
-export const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
-export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
-};
+const revealStagger = stagger();
 
+/** Staggers its `fadeUp` children into view once, when the block scrolls into the viewport. */
 export function Reveal({ children, className, as = "div" }: { children: ReactNode; className?: string; as?: "div" | "ul" }) {
   const reduce = useReducedMotion();
-  const Comp = as === "ul" ? motion.ul : motion.div;
+  const Comp = as === "ul" ? m.ul : m.div;
   return (
-    <Comp
-      className={className}
-      variants={stagger}
-      initial={reduce ? "show" : "hidden"}
-      whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
-    >
+    <Comp className={className} variants={revealStagger} initial={reduce ? "show" : "hidden"} whileInView="show" viewport={viewportOnce}>
       {children}
     </Comp>
   );
@@ -38,9 +30,13 @@ export function Section({ id, tone = "plain", busy, children }: { id: string; to
 export function SectionHeading({ id, eyebrow, title, intro }: { id: string; eyebrow: string; title: ReactNode; intro?: string }) {
   return (
     <Reveal className="mx-auto mb-12 max-w-2xl text-center sm:mb-16">
-      <motion.p variants={fadeUp} className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-brand"><span aria-hidden className="h-px w-6 bg-brand/60" />{eyebrow}<span aria-hidden className="h-px w-6 bg-brand/60" /></motion.p>
-      <motion.h2 id={`${id}-title`} variants={fadeUp} className="font-display text-3xl leading-tight tracking-tight sm:text-5xl">{title}</motion.h2>
-      {intro && <motion.p variants={fadeUp} className="mt-4 text-pretty text-muted-foreground sm:text-lg">{intro}</motion.p>}
+      <m.p variants={fadeUp} className="mb-4 inline-flex items-center gap-2.5 text-sm font-medium text-brand">
+        <span aria-hidden className="h-px w-6 bg-brand/60" />
+        {eyebrow}
+        <span aria-hidden className="h-px w-6 bg-brand/60" />
+      </m.p>
+      <m.h2 id={`${id}-title`} variants={fadeUp} className="font-display text-3xl leading-tight tracking-tight sm:text-5xl">{title}</m.h2>
+      {intro && <m.p variants={fadeUp} className="mx-auto mt-4 max-w-xl text-pretty text-muted-foreground sm:text-lg">{intro}</m.p>}
     </Reveal>
   );
 }

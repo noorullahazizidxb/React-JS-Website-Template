@@ -1,7 +1,8 @@
 import "./devminds-products.css";
 
 import type { CSSProperties } from "react";
-import { MotionConfig, motion } from "framer-motion";
+import { m } from "framer-motion";
+import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 import { DEVMINDS_PRODUCTS, LOGO_HEIGHT, desktopSpan, hasWideLogo, productLogoSrc, type DevmindsProduct, type LogoVariant, type ProductSlug } from "@/lib/devminds-products";
 
 interface DevmindsProductsProps {
@@ -46,40 +47,32 @@ type SpanStyle = CSSProperties & { "--dmp-span": number };
 
 const spanStyle = (product: DevmindsProduct): SpanStyle => ({ "--dmp-span": desktopSpan(product) });
 
+const gridStagger = stagger(0.05);
+
 /** "More from DevMinds" footer section listing every DevMinds product (two rows on desktop). */
 export function DevmindsProducts({ current }: DevmindsProductsProps) {
   return (
-    <MotionConfig reducedMotion="user">
-      <nav className="dmp" aria-labelledby="dmp-title">
-        <h2 id="dmp-title" className="dmp-title">More from DevMinds</h2>
-        <ul className="dmp-grid">
-          {DEVMINDS_PRODUCTS.map((product, index) => {
-            const isCurrent = product.slug === current;
-            const label = `${product.name}: ${product.descriptor}`;
-            return (
-              <motion.li
-                key={product.slug}
-                className={hasWideLogo(product) ? "dmp-item dmp-item--wide" : "dmp-item"}
-                style={spanStyle(product)}
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "0px 0px -40px 0px" }}
-                transition={{ duration: 0.3, ease: "easeOut", delay: index * 0.05 }}
-              >
-                {isCurrent ? (
-                  <div className="dmp-card" aria-current="page">
-                    <CardBody product={product} isCurrent />
-                  </div>
-                ) : (
-                  <a className="dmp-card" href={product.url} target="_blank" rel="noopener" aria-label={`${label} (opens in new tab)`}>
-                    <CardBody product={product} isCurrent={false} />
-                  </a>
-                )}
-              </motion.li>
-            );
-          })}
-        </ul>
-      </nav>
-    </MotionConfig>
+    <nav className="dmp" aria-labelledby="dmp-title">
+      <h2 id="dmp-title" className="dmp-title">More from DevMinds</h2>
+      <m.ul className="dmp-grid" variants={gridStagger} initial="hidden" whileInView="show" viewport={viewportOnce}>
+        {DEVMINDS_PRODUCTS.map((product) => {
+          const isCurrent = product.slug === current;
+          const label = `${product.name}: ${product.descriptor}`;
+          return (
+            <m.li key={product.slug} className={hasWideLogo(product) ? "dmp-item dmp-item--wide" : "dmp-item"} style={spanStyle(product)} variants={fadeUp}>
+              {isCurrent ? (
+                <div className="dmp-card" aria-current="page">
+                  <CardBody product={product} isCurrent />
+                </div>
+              ) : (
+                <a className="dmp-card" href={product.url} target="_blank" rel="noopener" aria-label={`${label} (opens in new tab)`}>
+                  <CardBody product={product} isCurrent={false} />
+                </a>
+              )}
+            </m.li>
+          );
+        })}
+      </m.ul>
+    </nav>
   );
 }

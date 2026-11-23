@@ -1,8 +1,9 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Quote } from "lucide-react";
 import { testimonials } from "@/data";
 import { Card, CardContent } from "../ui/card";
-import { Reveal, Section, SectionHeading, fadeUp } from "../motion";
+import { fadeUp } from "@/lib/motion";
+import { Reveal, Section, SectionHeading } from "../motion";
 
 export function Testimonials() {
   return (
@@ -10,7 +11,7 @@ export function Testimonials() {
       <SectionHeading id="testimonials" eyebrow="Testimonials" title="Trusted by teams who care about craft" />
       <Reveal as="ul" className="grid gap-5 md:grid-cols-3">
         {testimonials.map((t) => (
-          <motion.li key={t.name} variants={fadeUp}>
+          <m.li key={t.name} variants={fadeUp}>
             <Card className="h-full">
               <CardContent className="h-full p-7">
                 <figure className="flex h-full flex-col">
@@ -25,7 +26,7 @@ export function Testimonials() {
                 </figure>
               </CardContent>
             </Card>
-          </motion.li>
+          </m.li>
         ))}
       </Reveal>
     </Section>

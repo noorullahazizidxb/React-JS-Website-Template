@@ -1,10 +1,11 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
+import { AnimatePresence, m } from "framer-motion";
+import { ArrowRight, CheckCircle2, Loader2, Mail } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input, Textarea } from "../ui/input";
 import { Label } from "../ui/label";
-import { Reveal, fadeUp } from "../motion";
+import { crossfade, fadeUp, popIn } from "@/lib/motion";
+import { Reveal } from "../motion";
 import { preloadRecaptcha, verifyRecaptcha } from "../../lib/recaptcha";
 import { CONTACT_EMAIL } from "@/data";
 
@@ -33,32 +34,32 @@ export function Contact() {
         <Reveal className="relative overflow-hidden rounded-3xl bg-primary p-6 text-primary-foreground shadow-2xl shadow-primary/20 sm:p-14">
           <div aria-hidden className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-brand-2/40 blur-3xl" />
           <div className="relative grid gap-10 lg:grid-cols-2 lg:gap-12">
-            <motion.div variants={fadeUp}>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] opacity-70">Start a project</p>
+            <m.div variants={fadeUp}>
+              <p className="text-sm font-medium opacity-80">Start a project</p>
               <h2 id="contact-title" className="mt-4 font-display text-4xl leading-tight sm:text-5xl">Have something ambitious in mind?</h2>
               <p className="mt-5 max-w-md opacity-80">Tell us about your idea. We reply within one business day with thoughtful next steps — no pressure, no jargon.</p>
-              <a href={`mailto:${CONTACT_EMAIL}`} className="mt-8 inline-flex items-center gap-2 rounded-sm underline-offset-4 hover:underline focus-visible:outline-current"><Mail aria-hidden className="h-4 w-4" /> {CONTACT_EMAIL}</a>
-            </motion.div>
-            <motion.div variants={fadeUp} className="rounded-2xl bg-background p-5 text-foreground shadow-xl sm:p-8">
-              <AnimatePresence mode="wait">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="mt-8 inline-flex min-h-10 items-center gap-2 rounded-sm underline-offset-4 hover:underline focus-visible:outline-current"><Mail aria-hidden className="h-4 w-4" /> {CONTACT_EMAIL}</a>
+            </m.div>
+            <m.div variants={fadeUp} className="rounded-2xl bg-background p-5 text-foreground shadow-xl sm:p-8">
+              <AnimatePresence mode="wait" initial={false}>
                 {sent ? (
-                  <motion.div key="ok" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="flex min-h-[300px] flex-col items-center justify-center text-center" role="status">
-                    <CheckCircle2 className="h-12 w-12 text-brand" />
+                  <m.div key="ok" variants={crossfade} initial="hidden" animate="show" className="flex min-h-[300px] flex-col items-center justify-center text-center" role="status">
+                    <m.span variants={popIn} className="grid h-16 w-16 place-items-center rounded-full bg-brand/10 text-brand ring-1 ring-inset ring-brand/20"><CheckCircle2 aria-hidden className="h-8 w-8" /></m.span>
                     <p className="mt-4 text-xl font-semibold">Thank you!</p>
                     <p className="mt-1 text-sm text-muted-foreground">Your email app should open with your message.</p>
-                  </motion.div>
+                  </m.div>
                 ) : (
-                  <motion.form key="form" exit={{ opacity: 0 }} onSubmit={onSubmit} className="grid gap-5">
+                  <m.form key="form" variants={crossfade} exit="exit" onSubmit={onSubmit} className="grid gap-5">
                     <div className="grid gap-2"><Label htmlFor="name">Name</Label><Input id="name" name="name" required autoComplete="name" placeholder="Jane Doe" /></div>
                     <div className="grid gap-2"><Label htmlFor="email">Email</Label><Input id="email" name="email" type="email" required autoComplete="email" placeholder="jane@company.com" /></div>
                     <div className="grid gap-2"><Label htmlFor="message">Project details</Label><Textarea id="message" name="message" required placeholder="What are you building?" /></div>
                     {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
-                    <Button type="submit" size="lg" disabled={busy} aria-busy={busy}>{busy ? "Verifying…" : "Send inquiry"} <ArrowRight /></Button>
+                    <Button type="submit" size="lg" disabled={busy} aria-busy={busy}>{busy ? <><Loader2 aria-hidden className="animate-spin motion-reduce:animate-none" /> Verifying…</> : <>Send inquiry <ArrowRight aria-hidden /></>}</Button>
                     <p className="text-xs text-muted-foreground">This site is protected by reCAPTCHA and the Google <a className="underline underline-offset-2 hover:text-foreground" href="https://policies.google.com/privacy">Privacy Policy</a> and <a className="underline underline-offset-2 hover:text-foreground" href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
-                  </motion.form>
+                  </m.form>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </m.div>
           </div>
         </Reveal>
       </div>
