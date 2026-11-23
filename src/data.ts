@@ -19,3 +19,20 @@ export const testimonials = [
   { quote: "They combined strategic thinking with flawless execution. Our launch was the smoothest in company history.", name: "Daniel Okafor", role: "Founder, Nomad Travel Co." },
   { quote: "Fast, thoughtful and honest partners. Our conversion more than doubled within the first quarter.", name: "Lena Fischer", role: "Head of Digital, Verdant Living" },
 ];
+
+export interface NavLink {
+  href: `#${string}`;
+  label: string;
+}
+
+/** In-page sections shown in the header and footer navigation. */
+export const navLinks: readonly NavLink[] = [
+  { href: "#work", label: "Work" },
+  { href: "#services", label: "Services" },
+  { href: "#process", label: "Process" },
+  { href: "#testimonials", label: "Clients" },
+];
+
+export const contactLink: NavLink = { href: "#contact", label: "Start a project" };
+
+export const CONTACT_EMAIL = "hello@devminds.net";
