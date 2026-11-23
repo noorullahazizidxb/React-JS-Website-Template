@@ -1,5 +1,5 @@
-import { MotionConfig, motion } from "framer-motion";
 import { ThemeProvider } from "./components/theme";
+import { MotionProvider } from "./components/MotionProvider";
 import { Header } from "./components/sections/Header";
 import { Hero } from "./components/sections/Hero";
 import { Work } from "./components/sections/Work";
@@ -14,18 +14,18 @@ export default function App() {
   return (
     <ThemeProvider>
       <Seo />
-      <MotionConfig reducedMotion="user">
+      <MotionProvider>
         <Header />
-        <motion.main id="main" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+        <main id="main">
           <Hero />
           <Work />
           <Services />
           <Process />
           <Testimonials />
           <Contact />
-        </motion.main>
+        </main>
         <Footer />
-      </MotionConfig>
+      </MotionProvider>
     </ThemeProvider>
   );
 }
